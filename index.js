@@ -26,10 +26,10 @@ connectDB();
 
 app.use(express.json());
 //[SECTION] BAckend Routes
-app.use("/b1/users", userRoutes);
-app.use("/b1/products", productRoutes);
-app.use("/b1/carts", cartRoutes);
-app.use("/b1/orders", orderRoutes);
+app.use("/users", userRoutes);
+app.use("/products", productRoutes);
+app.use("/carts", cartRoutes);
+app.use("/orders", orderRoutes);
 
 app.use(
   session({
@@ -53,20 +53,4 @@ app.listen(PORT, () => {
   console.log(`Server-app running on port ${PORT}`);
 });
 
-
-mongoose.connection.once('open', () => console.log('Now connected to MongoDB Atlas'));
-
-// [SECTION] Backend Routes
-app.use("/users", userRoutes);
-
-// Server Gateway Response
-if(require.main === module){
-	app.listen(process.env.PORT || 3000, () => {
-		console.log(`API is now online on port ${process.env.PORT || 3000}`);
-
-	})
-}
-
-module.export = app;
 module.exports = app;
-
